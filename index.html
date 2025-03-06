@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kuesioner Literasi Digital dan AI</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Sembunyikan semua step kecuali step aktif */
+    .step { display: none; }
+    .step.active { display: block; }
+  </style>
+</head>
+<body class="bg-gradient-to-r from-blue-50 to-blue-100 min-h-screen">
+  <div class="max-w-4xl mx-auto p-6 bg-white shadow-xl rounded-lg my-10">
+    <form id="questionnaireForm">
+      <!-- Step 1: Judul & Informasi Demografis -->
+      <div class="step active" id="step-1">
+        <h1 class="text-3xl font-bold mb-4 text-center">Kuesioner Asesmen Literasi Digital dan AI</h1>
+        <p class="mb-6 text-center">Kuesioner ini bertujuan untuk menilai tingkat literasi digital dan pemahaman tentang AI di kalangan mahasiswa. Harap jawab semua pertanyaan dengan jujur.</p>
+        <hr class="mb-6">
+        <h2 class="text-2xl font-semibold mb-4">Informasi Demografis</h2>
+        <!-- Usia -->
+        <div class="mb-4">
+          <label class="block font-medium mb-1">1. Usia</label>
+          <input type="number" name="usia" class="border rounded w-32 p-2" required>
+        </div>
+        <!-- Jenis Kelamin -->
+        <div class="mb-4">
+          <label class="block font-medium mb-1">2. Jenis Kelamin</label>
+          <div class="flex space-x-4">
+            <label><input type="radio" name="jenis_kelamin" value="Laki-laki" required> Laki-laki</label>
+            <label><input type="radio" name="jenis_kelamin" value="Perempuan"> Perempuan</label>
+            <label><input type="radio" name="jenis_kelamin" value="Lainnya"> Lainnya</label>
+          </div>
+        </div>
+        <!-- Fakultas/Jurusan -->
+        <div class="mb-4">
+          <label class="block font-medium mb-1">3. Fakultas/Jurusan</label>
+          <input type="text" name="fakultas_jurusan" class="border rounded w-full p-2" required>
+        </div>
+        <!-- Semester -->
+        <div class="mb-4">
+          <label class="block font-medium mb-1">4. Semester</label>
+          <input type="number" name="semester" class="border rounded w-32 p-2" required>
+        </div>
+        <!-- Pertanyaan tambahan demografi -->
+        <div class="mb-4">
+          <label class="block font-medium mb-1">5. Perangkat apa saja yang Anda miliki? (Pilih semua yang sesuai)</label>
+          <div class="flex flex-col space-y-2">
+            <label><input type="checkbox" name="perangkat[]" value="Feature Phone"> Handphone (Feature Phone)</label>
+            <label><input type="checkbox" name="perangkat[]" value="Smartphone"> Smartphone</label>
+            <label><input type="checkbox" name="perangkat[]" value="Tablet"> Tablet</label>
+            <label><input type="checkbox" name="perangkat[]" value="Komputer PC"> Komputer PC</label>
+            <label><input type="checkbox" name="perangkat[]" value="Laptop"> Laptop</label>
+            <label> Lainnya: <input type="text" name="perangkat_lain" class="border rounded p-1 w-48"></label>
+          </div>
+        </div>
+        <div class="mb-4">
+          <label class="block font-medium mb-1">6. Berapa rata-rata biaya internet per bulan?</label>
+          <div class="flex flex-col space-y-2">
+            <label><input type="radio" name="biaya_internet" value="Kurang dari Rp50.000" required> Kurang dari Rp50.000</label>
+            <label><input type="radio" name="biaya_internet" value="Rp50.000 - Rp100.000"> Rp50.000 - Rp100.000</label>
+            <label><input type="radio" name="biaya_internet" value="Rp100.001 - Rp200.000"> Rp100.001 - Rp200.000</label>
+            <label><input type="radio" name="biaya_internet" value="Rp200.001 - Rp300.000"> Rp200.001 - Rp300.000</label>
+            <label><input type="radio" name="biaya_internet" value="Lebih dari Rp300.000"> Lebih dari Rp300.000</label>
+          </div>
+        </div>
+        <div class="flex justify-end">
+          <button type="button" class="next-btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Next</button>
+        </div>
+      </div>
+
+      <!-- Step 2: Literasi Digital Dasar -->
+      <div class="step" id="step-2">
+        <h2 class="text-2xl font-semibold mb-4">Literasi Digital Dasar</h2>
+        <!-- Pertanyaan 1 -->
+        <div class="mb-4">
+          <label class="block font-medium mb-1">1. Seberapa sering Anda menggunakan internet untuk keperluan akademik?</label>
+          <div class="flex flex-col space-y-2">
+            <label><input type="radio" name="literasi1" value="Tidak pernah" required> Tidak pernah</label>
+            <label><input type="radio" name="literasi1" value="Jarang"> Jarang</label>
+            <label><input type="radio" name="literasi1" value="Kadang-kadang"> Kadang-kadang</label>
+            <label><input type="radio" name="literasi1" value="Sering"> Sering</label>
+            <label><input type="radio" name="literasi1" value="Sangat sering"> Sangat sering</label>
+          </div>
+        </div>
+        <!-- Pertanyaan 2 -->
+        <div class="mb-4">
+          <label class="block font-medium mb-1">2. Perangkat apa yang paling sering Anda gunakan untuk mengakses internet?</label>
+          <div class="flex flex-col space-y-2">
+            <label><input type="radio" name="literasi2" value="Smartphone" required> Smartphone</label>
+            <label><input type="radio" name="literasi2" value="Laptop/PC"> Laptop/PC</label>
+            <label><input type="radio" name="literasi2" value="Tablet"> Tablet</label>
+            <label><input type="radio" name="literasi2" value="Lainnya"> Lainnya</label>
+          </div>
+        </div>
+        <!-- Pertanyaan 3 -->
+        <div class="mb-4">
+          <label class="block font-medium mb-1">3. Seberapa mahir Anda menggunakan aplikasi pengolah kata?</label>
+          <div class="flex flex-col space-y-2">
+            <label><input type="radio" name="literasi3" value="Tidak mahir" required> Tidak mahir</label>
+            <label><input type="radio" name="literasi3" value="Sedikit mahir"> Sedikit mahir</label>
+            <label><input type="radio" name="literasi3" value="Cukup mahir"> Cukup mahir</label>
+            <label><input type="radio" name="literasi3" value="Mahir"> Mahir</label>
+            <label><input type="radio" name="literasi3" value="Sangat mahir"> Sangat mahir</label>
+          </div>
+        </div>
+        <!-- Pertanyaan 4 -->
+        <div class="mb-4">
+          <label class="block font-medium mb-1">4. Seberapa mahir Anda menggunakan aplikasi pengolah data?</label>
+          <div class="flex flex-col space-y-2">
+            <label><input type="radio" name="literasi4" value="Tidak mahir" required> Tidak mahir</label>
+            <label><input type="radio" name="literasi4" value="Sedikit mahir"> Sedikit mahir</label>
+            <label><input type="radio" name="literasi4" value="Cukup mahir"> Cukup mahir</label>
+            <label><input type="radio" name="literasi4" value="Mahir"> Mahir</label>
+            <label><input type="radio" name="literasi4" value="Sangat mahir"> Sangat mahir</label>
+          </div>
+        </div>
+        <!-- Pertanyaan 5 -->
+        <div class="mb-4">
+          <label class="block font-medium mb-1">5. Seberapa mahir Anda menggunakan aplikasi presentasi?</label>
+          <div class="flex flex-col space-y-2">
+            <label><input type="radio" name="literasi5" value="Tidak mahir" required> Tidak mahir</label>
+            <label><input type="radio" name="literasi5" value="Sedikit mahir"> Sedikit mahir</label>
+            <label><input type="radio" name="literasi5" value="Cukup mahir"> Cukup mahir</label>
+            <label><input type="radio" name="literasi5" value="Mahir"> Mahir</label>
+            <label><input type="radio" name="literasi5" value="Sangat mahir"> Sangat mahir</label>
+          </div>
+        </div>
+        <div class="flex justify-between">
+          <button type="button" class="prev-btn bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded">Previous</button>
+          <button type="button" class="next-btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Next</button>
+        </div>
+      </div>
+
+      <!-- Step 3: Pencarian dan Evaluasi Informasi -->
+      <div class="step" id="step-3">
+        <h2 class="text-2xl font-semibold mb-4">Pencarian dan Evaluasi Informasi</h2>
+        <!-- Pertanyaan 1 -->
+        <div class="mb-4">
+          <label class="block font-medium mb-1">1. Seberapa sering Anda menggunakan mesin pencari untuk penelitian akademik?</label>
+          <div class="flex flex-col space-y-2">
+            <label><input type="radio" name="evaluasi1" value="Tidak pernah" required> Tidak pernah</label>
+            <label><input type="radio" name="evaluasi1" value="Jarang"> Jarang</label>
+            <label><input type="radio" name="evaluasi1" value="Kadang-kadang"> Kadang-kadang</label>
+            <label><input type="radio" name="evaluasi1" value="Sering"> Sering</label>
+            <label><input type="radio" name="evaluasi1" value="Sangat sering"> Sangat sering</label>
+          </div>
+        </div>
+        <!-- Pertanyaan 2 -->
+        <div class="mb-4">
+          <label class="block font-medium mb-1">2. Seberapa yakin Anda dapat membedakan sumber informasi yang kredibel?</label>
+          <div class="flex flex-col space-y-2">
+            <label><input type="radio" name="evaluasi2" value="Tidak yakin" required> Tidak yakin</label>
+            <label><input type="radio" name="evaluasi2" value="Sedikit yakin"> Sedikit yakin</label>
+            <label><input type="radio" name="evaluasi2" value="Cukup yakin"> Cukup yakin</label>
+            <label><input type="radio" name="evaluasi2" value="Yakin"> Yakin</label>
+            <label><input type="radio" name="evaluasi2" value="Sangat yakin"> Sangat yakin</label>
+          </div>
+        </div>
+        <!-- Pertanyaan 3 -->
+        <div class="mb-4">
+          <label class="block font-medium mb-1">3. Seberapa sering Anda memeriksa kebenaran informasi di internet?</label>
+          <div class="flex flex-col space-y-2">
+            <label><input type="radio" name="evaluasi3" value="Tidak pernah" required> Tidak pernah</label>
+            <label><input type="radio" name="evaluasi3" value="Jarang"> Jarang</label>
+            <label><input type="radio" name="evaluasi3" value="Kadang-kadang"> Kadang-kadang</label>
+            <label><input type="radio" name="evaluasi3" value="Sering"> Sering</label>
+            <label><input type="radio" name="evaluasi3" value="Sangat sering"> Sangat sering</label>
+          </div>
+        </div>
+        <div class="flex justify-between">
+          <button type="button" class="prev-btn bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded">Previous</button>
+          <button type="button" class="next-btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Next</button>
+        </div>
+      </div>
+
+      <!-- Step 4: Keamanan Digital -->
+      <div class="step" id="step-4">
+        <h2 class="text-2xl font-semibold mb-4">Keamanan Digital</h2>
+        <!-- Pertanyaan 1 -->
+        <div class="mb-4">
+          <label class="block font-medium mb-1">1. Seberapa sering Anda mengubah password akun online?</label>
+          <div class="flex flex-col space-y-2">
+            <label><input type="radio" name="keamanan1" value="Tidak pernah" required> Tidak pernah</label>
+            <label><input type="radio" name="keamanan1" value="Jarang"> Jarang</label>
+            <label><input type="radio" name="keamanan1" value="Kadang-kadang"> Kadang-kadang</label>
+            <label><input type="radio" name="keamanan1" value="Sering"> Sering</label>
+            <label><input type="radio" name="keamanan1" value="Sangat sering"> Sangat sering</label>
+          </div>
+        </div>
+        <!-- Pertanyaan 2 -->
+        <div class="mb-4">
+          <label class="block font-medium mb-1">2. Apakah Anda menggunakan password yang berbeda untuk akun yang berbeda?</label>
+          <div class="flex flex-col space-y-2">
+            <label><input type="radio" name="keamanan2" value="Ya, selalu" required> Ya, selalu</label>
+            <label><input type="radio" name="keamanan2" value="Ya, untuk akun penting"> Ya, untuk akun penting</label>
+            <label><input type="radio" name="keamanan2" value="Tidak, menggunakan password yang sama"> Tidak, menggunakan password yang sama</label>
+          </div>
+        </div>
+        <!-- Pertanyaan 3 -->
+        <div class="mb-4">
+          <label class="block font-medium mb-1">3. Seberapa yakin Anda mengenali email phishing?</label>
+          <div class="flex flex-col space-y-2">
+            <label><input type="radio" name="keamanan3" value="Tidak yakin" required> Tidak yakin</label>
+            <label><input type="radio" name="keamanan3" value="Sedikit yakin"> Sedikit yakin</label>
+            <label><input type="radio" name="keamanan3" value="Cukup yakin"> Cukup yakin</label>
+            <label><input type="radio" name="keamanan3" value="Yakin"> Yakin</label>
+            <label><input type="radio" name="keamanan3" value="Sangat yakin"> Sangat yakin</label>
+          </div>
+        </div>
+        <div class="flex justify-between">
+          <button type="button" class="prev-btn bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded">Previous</button>
+          <button type="button" class="next-btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Next</button>
+        </div>
+      </div>
+
+      <!-- Step 5: Komunikasi Digital -->
+      <div class="step" id="step-5">
+        <h2 class="text-2xl font-semibold mb-4">Komunikasi Digital</h2>
+        <!-- Pertanyaan 1 -->
+        <div class="mb-4">
+          <label class="block font-medium mb-1">1. Seberapa sering Anda menggunakan email untuk komunikasi akademik?</label>
+          <div class="flex flex-col space-y-2">
+            <label><input type="radio" name="komunikasi1" value="Tidak pernah" required> Tidak pernah</label>
+            <label><input type="radio" name="komunikasi1" value="Jarang"> Jarang</label>
+            <label><input type="radio" name="komunikasi1" value="Kadang-kadang"> Kadang-kadang</label>
+            <label><input type="radio" name="komunikasi1" value="Sering"> Sering</label>
+            <label><input type="radio" name="komunikasi1" value="Sangat sering"> Sangat sering</label>
+          </div>
+        </div>
+        <!-- Pertanyaan 2 -->
+        <div class="mb-4">
+          <label class="block font-medium mb-1">2. Seberapa sering Anda menggunakan platform kolaborasi online?</label>
+          <div class="flex flex-col space-y-2">
+            <label><input type="radio" name="komunikasi2" value="Tidak pernah" required> Tidak pernah</label>
+            <label><input type="radio" name="komunikasi2" value="Jarang"> Jarang</label>
+            <label><input type="radio" name="komunikasi2" value="Kadang-kadang"> Kadang-kadang</label>
+            <label><input type="radio" name="komunikasi2" value="Sering"> Sering</label>
+            <label><input type="radio" name="komunikasi2" value="Sangat sering"> Sangat sering</label>
+          </div>
+        </div>
+        <div class="flex justify-between">
+          <button type="button" class="prev-btn bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded">Previous</button>
+          <button type="button" class="next-btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Next</button>
+        </div>
+      </div>
+
+      <!-- Step 6: Pengetahuan tentang AI -->
+      <div class="step" id="step-6">
+        <h2 class="text-2xl font-semibold mb-4">Pengetahuan tentang AI</h2>
+        <!-- Pertanyaan 1 -->
+        <div class="mb-4">
+          <label class="block font-medium mb-1">1. Seberapa familiar Anda dengan konsep AI?</label>
+          <div class="flex flex-col space-y-2">
+            <label><input type="radio" name="ai1" value="Tidak familiar" required> Tidak familiar</label>
+            <label><input type="radio" name="ai1" value="Sedikit familiar"> Sedikit familiar</label>
+            <label><input type="radio" name="ai1" value="Cukup familiar"> Cukup familiar</label>
+            <label><input type="radio" name="ai1" value="Familiar"> Familiar</label>
+            <label><input type="radio" name="ai1" value="Sangat familiar"> Sangat familiar</label>
+          </div>
+        </div>
+        <!-- Pertanyaan 2 -->
+        <div class="mb-4">
+          <label class="block font-medium mb-1">2. Seberapa sering Anda menggunakan alat AI (misal: ChatGPT)?</label>
+          <div class="flex flex-col space-y-2">
+            <label><input type="radio" name="ai2" value="Tidak pernah" required> Tidak pernah</label>
+            <label><input type="radio" name="ai2" value="Jarang"> Jarang</label>
+            <label><input type="radio" name="ai2" value="Kadang-kadang"> Kadang-kadang</label>
+            <label><input type="radio" name="ai2" value="Sering"> Sering</label>
+            <label><input type="radio" name="ai2" value="Sangat sering"> Sangat sering</label>
+          </div>
+        </div>
+        <div class="flex justify-between">
+          <button type="button" class="prev-btn bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded">Previous</button>
+          <button type="button" class="next-btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Next</button>
+        </div>
+      </div>
+
+      <!-- Step 7: Penggunaan AI dalam Akademik -->
+      <div class="step" id="step-7">
+        <h2 class="text-2xl font-semibold mb-4">Penggunaan AI dalam Akademik</h2>
+        <!-- Pertanyaan 1 -->
+        <div class="mb-4">
+          <label class="block font-medium mb-1">1. Apakah Anda pernah menggunakan AI untuk membantu tugas akademik?</label>
+          <div class="flex flex-col space-y-2">
+            <label><input type="radio" name="akademik1" value="Ya, sering" required> Ya, sering</label>
+            <label><input type="radio" name="akademik1" value="Ya, kadang-kadang"> Ya, kadang-kadang</label>
+            <label><input type="radio" name="akademik1" value="Tidak pernah"> Tidak pernah</label>
+          </div>
+        </div>
+        <!-- Pertanyaan 2 -->
+        <div class="mb-4">
+          <label class="block font-medium mb-1">2. Jika ya, untuk tugas apa Anda menggunakan AI? (Pilih semua yang sesuai)</label>
+          <div class="flex flex-col space-y-2">
+            <label><input type="checkbox" name="akademik2[]" value="Menulis esai"> Menulis esai</label>
+            <label><input type="checkbox" name="akademik2[]" value="Riset literatur"> Riset literatur</label>
+            <label><input type="checkbox" name="akademik2[]" value="Memahami konsep"> Memahami konsep</label>
+            <label><input type="checkbox" name="akademik2[]" value="Pemrograman"> Pemrograman</label>
+            <label><input type="checkbox" name="akademik2[]" value="Analisis data"> Analisis data</label>
+            <label><input type="checkbox" name="akademik2[]" value="Lainnya"> Lainnya</label>
+          </div>
+        </div>
+        <div class="flex justify-between">
+          <button type="button" class="prev-btn bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded">Previous</button>
+          <button type="button" class="next-btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Next</button>
+        </div>
+      </div>
+
+      <!-- Step 8: Etika dan Dampak AI -->
+      <div class="step" id="step-8">
+        <h2 class="text-2xl font-semibold mb-4">Etika dan Dampak AI</h2>
+        <!-- Pertanyaan 1 -->
+        <div class="mb-4">
+          <label class="block font-medium mb-1">1. Seberapa yakin Anda memahami implikasi etis dari penggunaan AI?</label>
+          <div class="flex flex-col space-y-2">
+            <label><input type="radio" name="etika1" value="Tidak yakin" required> Tidak yakin</label>
+            <label><input type="radio" name="etika1" value="Sedikit yakin"> Sedikit yakin</label>
+            <label><input type="radio" name="etika1" value="Cukup yakin"> Cukup yakin</label>
+            <label><input type="radio" name="etika1" value="Yakin"> Yakin</label>
+            <label><input type="radio" name="etika1" value="Sangat yakin"> Sangat yakin</label>
+          </div>
+        </div>
+        <!-- Pertanyaan 2 -->
+        <div class="mb-4">
+          <label class="block font-medium mb-1">2. Seberapa khawatir Anda tentang dampak AI terhadap privasi data?</label>
+          <div class="flex flex-col space-y-2">
+            <label><input type="radio" name="etika2" value="Tidak khawatir" required> Tidak khawatir</label>
+            <label><input type="radio" name="etika2" value="Sedikit khawatir"> Sedikit khawatir</label>
+            <label><input type="radio" name="etika2" value="Cukup khawatir"> Cukup khawatir</label>
+            <label><input type="radio" name="etika2" value="Khawatir"> Khawatir</label>
+            <label><input type="radio" name="etika2" value="Sangat khawatir"> Sangat khawatir</label>
+          </div>
+        </div>
+        <div class="flex justify-between">
+          <button type="button" class="prev-btn bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded">Previous</button>
+          <button type="button" class="next-btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Next</button>
+        </div>
+      </div>
+
+      <!-- Step 9: Keterampilan AI Praktis -->
+      <div class="step" id="step-9">
+        <h2 class="text-2xl font-semibold mb-4">Keterampilan AI Praktis</h2>
+        <!-- Pertanyaan 1 -->
+        <div class="mb-4">
+          <label class="block font-medium mb-1">1. Seberapa mahir Anda merumuskan prompt efektif untuk alat AI?</label>
+          <div class="flex flex-col space-y-2">
+            <label><input type="radio" name="praktis1" value="Tidak mahir" required> Tidak mahir</label>
+            <label><input type="radio" name="praktis1" value="Sedikit mahir"> Sedikit mahir</label>
+            <label><input type="radio" name="praktis1" value="Cukup mahir"> Cukup mahir</label>
+            <label><input type="radio" name="praktis1" value="Mahir"> Mahir</label>
+            <label><input type="radio" name="praktis1" value="Sangat mahir"> Sangat mahir</label>
+          </div>
+        </div>
+        <!-- Pertanyaan 2 -->
+        <div class="mb-4">
+          <label class="block font-medium mb-1">2. Seberapa sering Anda memverifikasi informasi yang dihasilkan AI?</label>
+          <div class="flex flex-col space-y-2">
+            <label><input type="radio" name="praktis2" value="Tidak pernah" required> Tidak pernah</label>
+            <label><input type="radio" name="praktis2" value="Jarang"> Jarang</label>
+            <label><input type="radio" name="praktis2" value="Kadang-kadang"> Kadang-kadang</label>
+            <label><input type="radio" name="praktis2" value="Sering"> Sering</label>
+            <label><input type="radio" name="praktis2" value="Sangat sering"> Sangat sering</label>
+          </div>
+        </div>
+        <div class="flex justify-between">
+          <button type="button" class="prev-btn bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded">Previous</button>
+          <button type="button" class="next-btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Next</button>
+        </div>
+      </div>
+
+      <!-- Step 10: Pertanyaan Terbuka -->
+      <div class="step" id="step-10">
+        <h2 class="text-2xl font-semibold mb-4">Pertanyaan Terbuka</h2>
+        <!-- Pertanyaan 1 -->
+        <div class="mb-4">
+          <label class="block font-medium mb-1">1. Apa tantangan terbesar dalam menggunakan teknologi digital dan AI untuk pendidikan?</label>
+          <textarea name="terbuka1" rows="3" class="border rounded w-full p-2" required></textarea>
+        </div>
+        <!-- Pertanyaan 2 -->
+        <div class="mb-4">
+          <label class="block font-medium mb-1">2. Bagaimana Anda melihat peran AI di masa depan?</label>
+          <textarea name="terbuka2" rows="3" class="border rounded w-full p-2" required></textarea>
+        </div>
+        <!-- Pertanyaan 3 -->
+        <div class="mb-4">
+          <label class="block font-medium mb-1">3. Keterampilan digital atau AI apa yang ingin Anda kembangkan?</label>
+          <textarea name="terbuka3" rows="3" class="border rounded w-full p-2" required></textarea>
+        </div>
+        <div class="flex justify-between">
+          <button type="button" class="prev-btn bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded">Previous</button>
+          <!-- Tombol Submit muncul di step terakhir -->
+          <button type="submit" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">Submit</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <!-- JavaScript untuk navigasi multi-step dan pengiriman form -->
+  <script>
+    const form = document.getElementById('questionnaireForm');
+    const steps = document.querySelectorAll('.step');
+    let currentStep = 0;
+    
+    // Fungsi untuk menampilkan step yang sesuai
+    function showStep(stepIndex) {
+      steps.forEach((step, index) => {
+        step.classList.toggle('active', index === stepIndex);
+      });
+    }
+    
+    // Tombol Next
+    document.querySelectorAll('.next-btn').forEach(button => {
+      button.addEventListener('click', () => {
+        if (currentStep < steps.length - 1) {
+          currentStep++;
+          showStep(currentStep);
+        }
+      });
+    });
+    
+    // Tombol Previous
+    document.querySelectorAll('.prev-btn').forEach(button => {
+      button.addEventListener('click', () => {
+        if (currentStep > 0) {
+          currentStep--;
+          showStep(currentStep);
+        }
+      });
+    });
+    
+    // Pengiriman data ke Google Apps Script
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzIcMdnToHnstoEZjYpjDXWh5g7QbTVe_mvIWtP2KOsExJoalBYD4-uQiws0oRdPRsF6Q/exec';
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+        .then(response => {
+          alert('Terima kasih telah mengisi kuesioner!');
+          form.reset();
+          // Kembali ke step pertama setelah submit
+          currentStep = 0;
+          showStep(currentStep);
+        })
+        .catch(error => {
+          alert('Terjadi kesalahan. Silakan coba lagi.');
+          console.error('Error!', error.message);
+        });
+    });
+  </script>
+</body>
+</html>
